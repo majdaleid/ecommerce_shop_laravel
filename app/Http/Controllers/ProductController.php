@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
            use Illuminate\Http\Request;
           use App\Models\Product;
           use App\Models\Category;
+          use Session;
+          use App\Cart;
+          use Illuminate\Support\Facades\Redirect;
+
           class ProductController extends Controller
           {
           /*todo model product category one to many */
@@ -173,4 +177,27 @@ namespace App\Http\Controllers;
 
 
            }
+           public function addToCart($id)
+           {
+             $product =Product::find($id);
+              //  die($product);
+            // print_r($product);
+            $oldCart=Session::has('cart')? Session::get('cart'):null;
+            $cart=new Cart($oldCart);
+            //print_r($cart);
+            $cart->add($product,$id);
+            //print_r($cart);
+
+            Session::put('cart', $cart);
+
+
+        //dd(Session::get('cart'));
+
+           return redirect::to('/shop');
+
+           }
+
+
+
+
           }

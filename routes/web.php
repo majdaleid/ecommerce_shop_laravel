@@ -23,10 +23,15 @@ use Illuminate\Support\Facades\Route;
 
   Route::get('/register2','App\Http\Controllers\ClientController@register2');
         Route::get('/cart','App\Http\Controllers\ClientController@cart');
+        Route::get('/removeitem/{id}','App\Http\Controllers\ClientController@removeitem')->name('removeitem');
+
+
+
+
 
 
           Route::get('/checkout','App\Http\Controllers\ClientController@checkout');
-
+          Route::post('updateqty','App\Http\Controllers\ClientController@updateqty')->name('updateqty');
 
           Route::get('/admin','App\Http\Controllers\AdminController@dashboard')->name('dashboard');
 
@@ -48,7 +53,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/deleteproduct/{id}','App\Http\Controllers\productController@deleteproduct')->name('deleteproduct');
     Route::get('/activate_product/{id}','App\Http\Controllers\productController@activateproduct')->name('activate_product');
     Route::get('/unactivate_product/{id}','App\Http\Controllers\productController@unactivateproduct')->name('unactivate_product');
-
+    Route::get('/addToCart/{id}','App\Http\Controllers\productController@addToCart')->name('addTocart');
 
 
 
