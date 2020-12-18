@@ -30,8 +30,12 @@ use Illuminate\Support\Facades\Route;
 
 
 
-          Route::get('/checkout','App\Http\Controllers\ClientController@checkout');
+          Route::get('/checkout','App\Http\Controllers\ClientController@checkout')->name('checkout');
           Route::post('updateqty','App\Http\Controllers\ClientController@updateqty')->name('updateqty');
+          Route::post('/postcheckout','App\Http\Controllers\ClientController@postcheckout')->name('postcheckout');
+
+
+
 
           Route::get('/admin','App\Http\Controllers\AdminController@dashboard')->name('dashboard');
 

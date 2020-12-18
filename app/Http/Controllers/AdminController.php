@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Order;
 class AdminController extends Controller
 {
     public function dashboard(){
@@ -13,7 +13,13 @@ class AdminController extends Controller
 
 
       public function orders(){
-          return view('admin.orders');
+        $orders=Order::get();
+
+        $orders->transform(function($order){
+        $order->cart=unserialize($order->cart);
+          return $order;
+        });
+          return view('admin.orders')->with('orders',$orders);
       }
 
 

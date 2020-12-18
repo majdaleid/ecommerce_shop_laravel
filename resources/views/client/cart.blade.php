@@ -126,16 +126,21 @@ Cart
     						<span>${{$sum_price}}</span>
     					</p>
     				</div>
-    				<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+            @else
+             @if(Session::has('success'))
+                  <div class="alert alert-success">
+                    {{Session::get('success')}}
+                  </div>
+             @endif
+
+
+            @endif
+    				<p><a href="checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
     			</div>
     		</div>
 			</div>
 		</section>
-    @else
 
-
-
-    @endif
 
 
 @section("script")
